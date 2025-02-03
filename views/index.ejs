@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="/styles.css?v=<%= Date.now() %>">
+
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container-top">
+            
+            <h1>QR code Generator</h1>
+            <h2>convert any URL to QR Code</h2>
+
+        </div>
+
+        <div class="container-bottom">
+            <div class="form">
+                <form action="/submit" method="post" class="form">
+                    <label for="url">Enter your URL</label>
+                    <input type="text" name="url" id="url" placeholder="Enter URL here" required>
+                    <div class="button">
+                        <button type="submit">Generate QR</button>
+
+                        <button><a href="<%= qrCodePath %>" download="qr_code.png" class="download-btn">Download QR Code</a></button>
+                    </div>
+                </form>
+                
+            </div>
+
+            <div class="qr-wrapper">
+                <% if (qrCodePath) { %>
+                <div class="qr-container">
+                    <h2>Your QR Code:</h2>
+                    <img src="<%= qrCodePath %>?<%= Date.now() %>" alt="QR Code">
+                    
+                </div>
+                <% } else {%>
+                    <div></div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
